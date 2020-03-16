@@ -1,4 +1,6 @@
 from Screen import Screen
+from Controls_Manager import Controls_Manager
+from Player import Player
 import time, pygame
 
 class World:
@@ -7,7 +9,8 @@ class World:
         cls.width = width
         cls.height = height
         size = width, height
-        cls.entities = []
+        cls.player = Player(width/2, height/2)
+        cls.entities = [cls.player]
         cls.tickrate = tickrate
 
     @classmethod
@@ -30,9 +33,7 @@ class World:
     def run(cls):
         sleep_time = 1/cls.tickrate
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            Controls_Manager.handle_events()
             cls.tick()
             cls.draw()
             time.sleep(sleep_time)
