@@ -11,7 +11,7 @@ class World:
         cls.height = height
         size = width, height
         cls.player = Player(width/2, height/2)
-        cls.boulder_spawner = Boulder_Spawner(5, 1)
+        cls.boulder_spawner = Boulder_Spawner(5, 100)
         cls.entities = [cls.player, cls.boulder_spawner]
         cls.tickrate = tickrate
 

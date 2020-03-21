@@ -4,4 +4,4 @@ import pygame
 
 class Boulder(Entity):
     def __init__(self, x, y, xvel, yvel):
-        super().__init__(x, y, xvel, yvel, 'boulder.png')
+        super().__init__(x, y, xvel, yvel, 'boulder.png', 0.5)
