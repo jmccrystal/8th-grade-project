@@ -1,6 +1,7 @@
 from Screen import Screen
 from Controls_Manager import Controls_Manager
 from Player import Player
+from Boulder_Spawner import Boulder_Spawner
 import time, pygame
 
 class World:
@@ -10,7 +11,8 @@ class World:
         cls.height = height
         size = width, height
         cls.player = Player(width/2, height/2)
-        cls.entities = [cls.player]
+        cls.boulder_spawner = Boulder_Spawner(5, 1)
+        cls.entities = [cls.player, cls.boulder_spawner]
         cls.tickrate = tickrate
 
     @classmethod
