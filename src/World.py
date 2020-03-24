@@ -23,6 +23,8 @@ class World:
     def tick(cls):
         for entity in cls.entities:
             entity.tick()
+        if cls.boulder_spawner.is_intersecting_boulder(cls.player):
+            cls.on_player_intersect_boulder()
 
     @classmethod
     def draw(cls):
@@ -39,3 +41,7 @@ class World:
             cls.tick()
             cls.draw()
             time.sleep(sleep_time)
+
+    @classmethod
+    def on_player_intersect_boulder(cls):
+        print('fdas')

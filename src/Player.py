@@ -7,7 +7,7 @@ class Player(Entity):
     speed = 5
 
     def __init__(self, x, y):
-        super().__init__(x, y, 0, 0, 'intro_ball.gif')
+        super().__init__(x, y, 0, 0, 50, 'intro_ball.gif')
 
     def start_move(self, direction):
         if direction == Direction.UP:
