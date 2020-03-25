@@ -1,4 +1,5 @@
 import pygame
+from Score import Score
 
 class Screen:
     @classmethod
@@ -6,6 +7,7 @@ class Screen:
         pygame.init()
         size = width, height
         cls.screen = pygame.display.set_mode(size)
+        cls.font = pygame.font.SysFont('Comic Sans MS', 30)
 
     @classmethod
     def fill_screen(cls, color):
@@ -20,7 +22,8 @@ class Screen:
 
     @classmethod
     def draw_text(cls, text, x, y, color):
-        cls.screen.blit(text, (x, y))
+        rendered_text = cls.font.render(text, True, color) 
+        cls.screen.blit(rendered_text, (x, y))
 
     @classmethod
     def screen_update(cls):

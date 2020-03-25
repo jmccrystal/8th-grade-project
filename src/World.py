@@ -2,6 +2,7 @@ from Screen import Screen
 from Controls_Manager import Controls_Manager
 from Player import Player
 from Boulder_Spawner import Boulder_Spawner
+from Score import Score
 import time, pygame
 
 class World:
@@ -31,7 +32,9 @@ class World:
         Screen.fill_screen((0, 0, 0))
         for entity in cls.entities:
             entity.draw()
+        cls.display_score()
         Screen.screen_update()
+        
 
     @classmethod
     def run(cls):
@@ -45,3 +48,7 @@ class World:
     @classmethod
     def on_player_intersect_boulder(cls):
         pass
+
+    @classmethod
+    def display_score(cls):
+        Screen.draw_text(str(Score.get_score()), 10, 10, (255,255,255))

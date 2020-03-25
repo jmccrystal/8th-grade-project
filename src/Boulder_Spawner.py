@@ -1,6 +1,7 @@
 from Entity import Entity
 from Boulder import Boulder
 from Screen import Screen
+from Score import Score
 import random, pygame
 
 class Boulder_Spawner(Entity):
@@ -27,8 +28,9 @@ class Boulder_Spawner(Entity):
 
     def spawn_boulder(self):
         x = random.randint(0, Screen.get_width())
-        boulder = Boulder(x, -400, 0, self.velocity)
+        boulder = Boulder(x, -150, 0, self.velocity)
         self.boulders.append(boulder)
+        Score.increment_score()
 
     def is_intersecting_boulder(self, entity):
         for boulder in self.boulders:
