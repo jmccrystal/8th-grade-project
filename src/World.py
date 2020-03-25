@@ -12,7 +12,7 @@ class World:
         cls.height = height
         size = width, height
         cls.player = Player(width/2, height/2)
-        cls.boulder_spawner = Boulder_Spawner(5, 100)
+        cls.boulder_spawner = Boulder_Spawner(5, 50)
         cls.entities = [cls.player, cls.boulder_spawner]
         cls.tickrate = tickrate
 
@@ -47,7 +47,7 @@ class World:
 
     @classmethod
     def on_player_intersect_boulder(cls):
-        pass
+        Score.reset_score()
 
     @classmethod
     def display_score(cls):
