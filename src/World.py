@@ -44,4 +44,4 @@ class World:
 
     @classmethod
     def on_player_intersect_boulder(cls):
-        print('fdas')
+        pass

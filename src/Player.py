@@ -1,6 +1,7 @@
 from Entity import Entity
 from Direction import Direction
 from Controls_Manager import Controls_Manager
+from Screen import Screen
 import pygame
 
 class Player(Entity):
@@ -8,6 +9,21 @@ class Player(Entity):
 
     def __init__(self, x, y):
         super().__init__(x, y, 0, 0, 50, 'intro_ball.gif')
+
+
+    def hit_wall(self):
+        if self.hit_circle.is_outside_top_wall():
+            self.ypos = self.hit_circle.get_radius()
+        if self.hit_circle.is_outside_bottom_wall():
+            self.ypos = Screen.get_height() - self.hit_circle.get_radius()
+        if self.hit_circle.is_outside_right_wall():
+            self.xpos = Screen.get_width() - self.hit_circle.get_radius()
+        if self.hit_circle.is_outside_left_wall():
+            self.xpos = self.hit_circle.get_radius()
+
+    def tick(self):
+        super().tick()
+        self.hit_wall()
 
     def start_move(self, direction):
         if direction == Direction.UP:

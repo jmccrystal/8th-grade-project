@@ -1,5 +1,6 @@
 from Entity import Entity
 from Boulder import Boulder
+from Screen import Screen
 import random, pygame
 
 class Boulder_Spawner(Entity):
@@ -11,7 +12,7 @@ class Boulder_Spawner(Entity):
         #tick_counter is how many ticks have passed since the game starts
         self.tick_counter = 0
         self.boulders = []
-        self.screenwidth, self.screenheight = pygame.display.get_surface().get_size()
+
 
     def tick(self):
         self.tick_counter += 1
@@ -25,7 +26,7 @@ class Boulder_Spawner(Entity):
             boulder.draw()
 
     def spawn_boulder(self):
-        x = random.randint(0, self.screenwidth)
+        x = random.randint(0, Screen.get_width())
         boulder = Boulder(x, -400, 0, self.velocity)
         self.boulders.append(boulder)
 

@@ -1,4 +1,5 @@
 import math
+from Screen import Screen
 
 class Hit_Circle:
     def __init__(self, radius, entity):
@@ -13,3 +14,26 @@ class Hit_Circle:
         distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
         return distance < self.radius + other_hit_circle.radius
+
+    def is_outside_left_wall(self):
+        if self.entity.get_x_pos() - self.radius < 0:
+            return True
+        return False
+
+    def is_outside_top_wall(self):
+        if self.entity.get_y_pos() - self.radius < 0:
+            return True
+        return False
+
+    def is_outside_right_wall(self):
+        if self.entity.get_x_pos() + self.radius > Screen.get_width():
+            return True
+        return False
+    
+    def is_outside_bottom_wall(self):
+        if self.entity.get_y_pos() + self.radius > Screen.get_height():
+            return True
+        return False
+
+    def get_radius(self):
+        return self.radius

@@ -9,5 +9,5 @@ def init_game(width, height, tickrate):
     World.init(width, height, tickrate)
     Actions.set_controls()
 
-init_game(1900, 1000, 60)
+init_game(500, 500, 60)
 World.run()
