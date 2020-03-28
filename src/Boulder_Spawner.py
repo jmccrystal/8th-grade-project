@@ -21,6 +21,7 @@ class Boulder_Spawner(Entity):
             self.spawn_boulder()
         for boulder in self.boulders:
             boulder.tick()
+            self.despawn_boulder()
 
     def draw(self):
         for boulder in self.boulders:
@@ -37,3 +38,8 @@ class Boulder_Spawner(Entity):
             if boulder.get_hit_circle().is_intersecting(entity.get_hit_circle()):
                 return True
         return False
+
+    def despawn_boulder(self):
+        for boulder in self.boulders:
+            if boulder.hit_circle.should_despawn_boulder():
+                self.boulders.remove(boulder)

@@ -35,5 +35,10 @@ class Hit_Circle:
             return True
         return False
 
+    def should_despawn_boulder(self):
+        if self.entity.get_y_pos() - self.radius > Screen.get_height():
+            return True
+        return False
+
     def get_radius(self):
         return self.radius
