@@ -36,3 +36,8 @@ class Screen:
     @classmethod
     def get_height(cls):
         return pygame.display.get_surface().get_size()[1]
+
+    @classmethod
+    def show_title_screen(cls):
+        Screen.fill_screen(255,255,255)
+        Screen.draw_text("Boulder Dodge!", Screen.get_width() // 2, Screen.get_height() // 2, (0, 0, 0))

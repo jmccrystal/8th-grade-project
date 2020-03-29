@@ -3,6 +3,7 @@ from Controls_Manager import Controls_Manager
 from Player import Player
 from Boulder_Spawner import Boulder_Spawner
 from Score import Score
+from Game_State import Game_State
 import time, pygame
 
 class World:
@@ -11,10 +12,8 @@ class World:
         cls.width = width
         cls.height = height
         size = width, height
-        cls.player = Player(width/2, height/2)
-        cls.boulder_spawner = Boulder_Spawner(5, 50)
-        cls.entities = [cls.player, cls.boulder_spawner]
         cls.tickrate = tickrate
+        cls.state = Game_State.TITLE_SCREEN
 
     @classmethod
     def add_entity(cls, entity):
@@ -40,9 +39,14 @@ class World:
     def run(cls):
         sleep_time = 1/cls.tickrate
         while True:
-            Controls_Manager.handle_events()
-            cls.tick()
-            cls.draw()
+            Controls_Manager.handle_events(cls.state)
+            if cls.state == Game_State.GAME:
+                cls.tick()
+                cls.draw()
+            elif cls.state == Game_State.TITLE_SCREEN:
+                cls.show_title_screen()
+            elif cls.state == Game_State.DEATH_SCREEN:
+                pass
             time.sleep(sleep_time)
 
     @classmethod
@@ -52,3 +56,30 @@ class World:
     @classmethod
     def display_score(cls):
         Screen.draw_text(str(Score.get_score()), 10, 10, (255,255,255))
+
+    @classmethod
+    def change_game_state(cls, new_game_state):
+        if cls.state == new_game_state:
+            raise Error()
+
+        if new_game_state == Game_State.TITLE_SCREEN:
+            if cls.state is not Game_State.DEATH_SCREEN:
+                raise Error()
+        elif new_game_state == Game_State.GAME:
+            pass
+        elif new_game_state == Game_State.DEATH_SCREEN:
+            if cls.state is not Game_State.GAME:
+                raise Error()
+        cls.state = new_game_state
+
+    @classmethod
+    def reset_entities(cls):
+        cls.player = Player(cls.width/2, cls.height/2)
+        cls.boulder_spawner = Boulder_Spawner(5, 25)
+        cls.entities = [cls.player, cls.boulder_spawner]
+
+    @classmethod
+    def show_title_screen(self):
+        Screen.fill_screen((0,0,0))
+        Screen.draw_text("Boulder Dodge!", Screen.get_width() // 2 - 100, Screen.get_height() // 2 - 10, (255,255,255))
+        Screen.screen_update()
