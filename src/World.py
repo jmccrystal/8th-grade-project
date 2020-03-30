@@ -46,12 +46,14 @@ class World:
             elif cls.state == Game_State.TITLE_SCREEN:
                 cls.show_title_screen()
             elif cls.state == Game_State.DEATH_SCREEN:
-                pass
+                cls.show_death_screen()
             time.sleep(sleep_time)
 
     @classmethod
     def on_player_intersect_boulder(cls):
         Score.reset_score()
+        World.change_game_state(Game_State.DEATH_SCREEN)
+        cls.show_death_screen()
 
     @classmethod
     def display_score(cls):
@@ -61,7 +63,6 @@ class World:
     def change_game_state(cls, new_game_state):
         if cls.state == new_game_state:
             raise Error()
-
         if new_game_state == Game_State.TITLE_SCREEN:
             if cls.state is not Game_State.DEATH_SCREEN:
                 raise Error()
@@ -79,8 +80,14 @@ class World:
         cls.entities = [cls.player, cls.boulder_spawner]
 
     @classmethod
-    def show_title_screen(self):
+    def show_title_screen(cls):
         Screen.fill_screen((0,0,0))
         Screen.draw_text("Boulder Dodge!", Screen.get_width() // 2 - 150, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.draw_text("Press the spacebar to begin.", Screen.get_width() // 2 - 250, Screen.get_height() // 2 + 50, (255,255,255))
+        Screen.screen_update()
+
+    @classmethod
+    def show_death_screen(self):
+        Screen.fill_screen((200, 0, 0))
+        Screen.draw_text("You Died! Press spacebar to play again, or T to go to the title screen.", Screen.get_width() // 2 - 470, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.screen_update()

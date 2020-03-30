@@ -18,6 +18,9 @@ class Actions:
         Controls_Manager.map_key(pygame.K_d, pygame.KEYUP, Game_State.GAME, cls.end_move_right)
 
         Controls_Manager.map_key(pygame.K_SPACE, pygame.KEYUP, Game_State.TITLE_SCREEN, cls.start_game)
+        Controls_Manager.map_key(pygame.K_SPACE, pygame.KEYUP, Game_State.DEATH_SCREEN, cls.start_game)
+
+        Controls_Manager.map_key(pygame.K_t, pygame.KEYUP, Game_State.DEATH_SCREEN, cls.go_to_title_screen)
 
 
     @classmethod
@@ -56,3 +59,7 @@ class Actions:
     def start_game(cls):
         World.reset_entities()
         World.change_game_state(Game_State.GAME)
+
+    @classmethod
+    def go_to_title_screen(cls):
+        World.change_game_state(Game_State.TITLE_SCREEN)
