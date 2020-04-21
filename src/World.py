@@ -53,7 +53,6 @@ class World:
     def on_player_intersect_boulder(cls):
         Score.reset_score()
         World.change_game_state(Game_State.DEATH_SCREEN)
-        cls.show_death_screen()
 
     @classmethod
     def display_score(cls):
@@ -81,13 +80,13 @@ class World:
 
     @classmethod
     def show_title_screen(cls):
-        Screen.fill_screen((0,0,0))
+        Screen.fill_screen((0,100,100))
         Screen.draw_text("Boulder Dodge!", Screen.get_width() // 2 - 150, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.draw_text("Press the spacebar to begin.", Screen.get_width() // 2 - 250, Screen.get_height() // 2 + 50, (255,255,255))
         Screen.screen_update()
 
     @classmethod
     def show_death_screen(self):
-        Screen.fill_screen((200, 0, 0))
+        Screen.fill_screen((150, 0, 0))
         Screen.draw_text("You Died! Press spacebar to play again, or T to go to the title screen.", Screen.get_width() // 2 - 470, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.screen_update()
