@@ -29,7 +29,7 @@ class Boulder_Spawner(Entity):
 
     def spawn_boulder(self):
         x = random.randint(0, Screen.get_width())
-        boulder = Boulder(x, -150, 0, self.velocity)
+        boulder = Boulder(x, -150, 0+random.uniform(-0.5, 0.5), self.velocity*random.uniform(1, 2), random.uniform(0.4, 0.6))
         self.boulders.append(boulder)
         Score.increment_score()
 
