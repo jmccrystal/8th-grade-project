@@ -81,12 +81,12 @@ class World:
     @classmethod
     def show_title_screen(cls):
         Screen.fill_screen((0,100,100))
-        Screen.draw_text("Dodge the Space Garbage!", Screen.get_width() // 2 - 250, Screen.get_height() // 2 - 10, (255,255,255))
+        Screen.draw_text("Dodge the Meteors!", Screen.get_width() // 2 - 200, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.draw_text("Press the spacebar to begin.", Screen.get_width() // 2 - 250, Screen.get_height() // 2 + 40, (255,255,255))
         Screen.screen_update()
 
     @classmethod
     def show_death_screen(self):
-        Screen.fill_screen((150, 0, 0))
+        Screen.fill_screen((255, 0, 0))
         Screen.draw_text("You Died! Press spacebar to play again, or T to go to the title screen.", Screen.get_width() // 2 - 470, Screen.get_height() // 2 - 10, (255,255,255))
         Screen.screen_update()

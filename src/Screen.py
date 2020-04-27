@@ -7,7 +7,7 @@ class Screen:
         pygame.init()
         size = width, height
         cls.screen = pygame.display.set_mode(size)
-        cls.font = pygame.font.SysFont('Comic Sans MS', 30)
+        cls.font = pygame.font.SysFont('Corbel',  35)
 
     @classmethod
     def fill_screen(cls, color):

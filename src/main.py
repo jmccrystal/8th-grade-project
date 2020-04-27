@@ -13,5 +13,5 @@ def init_game(width, height, tickrate):
 
 
 init_game(1000, 750, 60)
-pygame.display.set_caption('Dodge the Space Garbage!')
+pygame.display.set_caption('Dodge the Meteors!')
 World.run()
