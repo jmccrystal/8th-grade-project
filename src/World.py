@@ -81,8 +81,8 @@ class World:
     @classmethod
     def show_title_screen(cls):
         Screen.fill_screen((0,100,100))
-        Screen.draw_text("Boulder Dodge!", Screen.get_width() // 2 - 150, Screen.get_height() // 2 - 10, (255,255,255))
-        Screen.draw_text("Press the spacebar to begin.", Screen.get_width() // 2 - 250, Screen.get_height() // 2 + 50, (255,255,255))
+        Screen.draw_text("Dodge the Space Garbage!", Screen.get_width() // 2 - 250, Screen.get_height() // 2 - 10, (255,255,255))
+        Screen.draw_text("Press the spacebar to begin.", Screen.get_width() // 2 - 250, Screen.get_height() // 2 + 40, (255,255,255))
         Screen.screen_update()
 
     @classmethod
