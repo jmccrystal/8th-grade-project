@@ -32,6 +32,7 @@ class World:
         for entity in cls.entities:
             entity.draw()
         cls.display_score()
+        cls.display_high_score()
         Screen.screen_update()
         
 
@@ -51,12 +52,17 @@ class World:
 
     @classmethod
     def on_player_intersect_boulder(cls):
+        Score.set_high_score()
         Score.reset_score()
         World.change_game_state(Game_State.DEATH_SCREEN)
 
     @classmethod
     def display_score(cls):
         Screen.draw_text(str(Score.get_score()), 10, 10, (255,255,255))
+
+    @classmethod
+    def display_high_score(cls):
+        Screen.draw_text(str(Score.get_high_score()), 10, 50, (255,255,255))
 
     @classmethod
     def change_game_state(cls, new_game_state):
